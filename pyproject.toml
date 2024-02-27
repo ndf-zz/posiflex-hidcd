@@ -1,0 +1,28 @@
+[build-system]
+requires = ["setuptools>=62"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "posiflex-hidcd"
+version = "1.0.0"
+description = "USB HID Cash Drawer Interface"
+readme = "README.md"
+requires-python = ">=3.9"
+license = {text = "MIT"}
+keywords = ["posiflex", "cr-4xxx", "usb", "hid"]
+authors = [
+    {email = "ndf-zz@6-v.org", name = "Nathan Fraser"}
+]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Topic :: Office/Business :: Financial :: Point-Of-Sale",
+    "Topic :: System :: Hardware :: Universal Serial Bus (USB) :: Human Interface Device (HID)",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+]
+dependencies = [
+    "hidapi-cffi",
+]
+[project.urls]
+homepage = "https://github.com/ndf-zz/posiflex-hidcd"
+
