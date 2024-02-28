@@ -1,0 +1,9 @@
+
+# Grant local users and plugdev group read/write access to HID cash drawer
+
+ACTION=="remove", GOTO="posiflex_end"
+
+KERNEL=="hidraw*", ATTRS{idVendor}=="0d3a", ATTRS{idProduct}=="020[01234567]", TAG+="uaccess", GROUP="plugdev", MODE="660"
+SUBSYSTEMS=="usb", ATTRS{idVendor}=="0d3a", ATTRS{idProduct}=="020[01234567]", TAG+="uaccess", GROUP="plugdev", MODE="660"
+
+LABEL="posiflex_end"

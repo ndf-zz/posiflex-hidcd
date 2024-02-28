@@ -1,9 +1,0 @@
-
-# Grant all in group 'users' read/write access to HID cash drawer
-
-ACTION=="remove", GOTO="posiflex_end"
-SUBSYSTEM!="hidraw", GOTO="posiflex_end"
-
-KERNEL=="hidraw*", ATTRS{idVendor}=="0d3a", ATTRS{idProduct}=="020[01234567]", GROUP="users", MODE="660"
-
-LABEL="posiflex_end"
