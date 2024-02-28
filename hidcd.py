@@ -23,7 +23,7 @@ _USBVID = 0x0d3a
 # USB PRoduct ID (base)
 _USBPID = 0x0200
 # Read timeout
-_TIMEOUTMS = 200
+_TIMEOUTMS = 100
 
 
 class HidCd:
@@ -54,15 +54,20 @@ class HidCd:
             _log.warning('No HID cash drawer found')
 
     def _write(self, buf):
-        if self.connected():
-            _log.debug('SEND: %r', buf)
-            self._cd.write(buf)
+        _log.debug('SEND: %r', buf)
+        self._cd.write(buf)
 
     def _read(self):
-        if self.connected():
-            res = self._cd.read(_CMDLEN, timeout_ms=_TIMEOUTMS)
-            _log.debug('RECV: %r', res)
-            return res
+        res = b''
+        while len(res) < _CMDLEN:
+            nr = self._cd.read(_CMDLEN - len(res), timeout_ms=_TIMEOUTMS)
+            if len(nr) == 0:
+                break
+            res += nr
+        _log.debug('RECV: %r', res)
+        if len(res) != _CMDLEN:
+            _log.warning('Short read(%d): %r', len(res), res)
+        return res
 
     def closed(self):
         """Return true if cash drawer is closed"""
