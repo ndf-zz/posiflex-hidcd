@@ -9,9 +9,9 @@ Example interface for Posiflex USB HID Cash Drawer
 	if cd.closed():
 	    cd.open()
 
-On linux, read/write access to the /dev/hidrawX device
-file may be required. See example udev rule 99-posiflex.rule
-for a possible approach.
+On linux, read/write access to the hid device
+file may be required. See example udev rule
+72-posiflex-hid.rules for a possible approach.
 
 ## Device Info
 
