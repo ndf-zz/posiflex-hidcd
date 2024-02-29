@@ -9,6 +9,10 @@ Example interface for Posiflex USB HID Cash Drawer
 	if cd.closed():
 	    cd.open()
 
+## Requirements
+
+   - [hidapi-cffi](https://pypi.org/project/hidapi-cffi/)
+
 On linux, read/write access to the hid device
 file may be required. See example udev rule
 72-posiflex-hid.rules for a possible approach.
